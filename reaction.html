@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Usage of setTimeout</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body style="margin-left: 30px;margin-right: 30px;">
+
+  <h2>Radha Nayakanti Reaction Timer</h2>
+  <div id ="target">Your  Time</div>
+  <div id="countdown">Count</div>
+  <br>
+  <button class ="btn-success" onclick="startTime()">Start Timer</button>
+  <button class ="btn-primary" onclick ="recordReact()">React Now</button>
+  <script> 
+  var myTime = undefined
+  function recordReact(){
+      myTime = Date.now()
+      console.log(myTime)
+
+  }
+
+  function startTime(){
+      let min = 2
+      let max = 10
+      countdown = Math.floor(Math.random()*(max-min+1)+min)
+      for(let i=countdown;i>=0;i--){
+        setTimeout(
+              () => {
+                  document.getElementById("countdown").innerHTML="Count "+i
+                },(countdown-i)*1000,i)
+      }
+
+      setTimeout((function()
+      {if(myTime == undefined)
+        {
+          document.getElementById("target").innerHTML = "Too Slow"
+      }
+      else{
+          var buttonTime = Date.now()
+          difference = buttonTime - myTime
+          document.getElementById("target").innerHTML = "Time was "+difference
+      }
+      }),countdown *1000)
+      
+  }
+
+    
+    </script>
+
+</body>
+</html>
