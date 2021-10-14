@@ -21,7 +21,7 @@
   <div class="container">
       <div class ="row">
  <div  class="col-sm-2">
-     <img id ="0" onclick="check(0)" src="plant.jpg" alt="plant image">
+     <img id ="image0" onclick="check(0)" src="plant.jpg" alt="plant image">
           </div>
           <div class="col-sm-2">
             <img id ="image1" onclick="check(1)"src="plant.jpg" alt="plant image">
@@ -111,6 +111,8 @@
     "image11","image12","image13","image14","image15","image16","image17","image18","image19","image20","image21","image22","image23"]
     var triescount=0;
     var animalLocation=13;
+    let animalLocation = Math.floor(Math.random()*25)
+   
     function check(position){
         
         let imgId;
@@ -151,6 +153,20 @@ function distance(pos1,pos2)
             return (Math.abs(x1-x2)+Math.abs(y1-y2))
 
         }
+        function newGame() {
+            triesCount = 0;
+            animalLocation = Math.round(Math.random() * (23 - 0) + 0);
+            document.getElementById("tries").innerHTML = "Number of triesis zero";
+            distanceOfAnimal = "unknown"
+            document.getElementById("distance").innerHTML = "Distance is " + distanceOfAnimal;
+            for (var i = 0; i < 24; i++) {
+                if(ids[i]== ids[animalLocation])
+                document.getElementById(ids[i]).src = "animal.jpg";
+                else
+                document.getElementById(ids[i]).src = "plant.jpg";
+            }
+        }
+        
 </script>
 </body>
 </html>
