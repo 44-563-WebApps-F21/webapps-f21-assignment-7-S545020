@@ -51,14 +51,12 @@
     <script>
     
         function makeNewDiv() {
-            /* make the div and its text */
+           
             let data = document.getElementById("input").value;
             let element = document.createElement("div")
             element.innerHTML = data
             element.className = "stack"
     
-    
-            /* add it to the container */
             document.getElementById('target').appendChild(element)
     
         }
@@ -88,7 +86,7 @@
     
     
         }
-        function uniqueValues(){
+        function unique(){
 
 let stackItems = document.getElementsByClassName('stack');
     for (let i = stackItems.length-1; i >=0; i--) {
