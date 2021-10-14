@@ -1,0 +1,119 @@
+
+   
+<!DOCTYPE html>
+<html> <head>
+    <title>List Page</title>
+     <style>
+    .flex-container {
+      display: flex;  flex-direction:row;
+      background-color:cyan;
+  }
+
+.flex-container > div {  /*div children of the flex container*/
+  background-color: #f1f1f1; 
+  margin: 10px;  padding: 20px;  font-size: 30px;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) { 
+	 .flex-container{
+		 flex-direction:column;
+		 background-color: green;
+	  }
+	}
+</style></head>
+
+
+
+<body style="margin-left: 30px;margin-right: 30px;">
+        <h1>Radha Naykanti builds a stack</h1>
+        <div>
+    
+        </div>
+        <div class="flex-container" id="target">
+            <div class="stack">row item 1</div>
+            <div class="stack">row item 2</div>
+            <div class="stack">row item 3</div>
+        </div>
+    
+        <p> Press the button to create an new element of type div and then add it to the container.
+        </p>
+        <div class="input-div">
+            <input id="input" type="text" />
+            <button style="background-color:darksalmon"class="pushbtn" onclick="makeNewDiv()"><b>Push value</b></button>
+
+            <button style="background-color:darksalmon" class="popbtn" onclick="popItem()"><b>Pop</b></button>
+            <button style="background-color:darksalmon"class="zapbtn" onclick="Zapvalues()"><b>Zap values</b></button>
+            <button style="background-color:darksalmon"class="zapbtn" onclick="uniqueHandler()"><b>Unique</b></button>
+    
+    
+        </div>
+    
+    
+    
+   
+    <script>
+    
+        function uniqueHandler(){
+    
+            let stackItems = document.getElementsByClassName('stack');
+            for (let index = 0; index < stackItems.length; index++) {
+                    let element = stackItems[index].innerHTML;
+                    for (let insideIndex = index+1; insideIndex < stackItems.length; insideIndex++) {
+                        let elementInside = stackItems[insideIndex].innerHTML;
+    
+                        if (element == elementInside) {
+                        console.log(stackItems[insideIndex])
+                        stackItems[insideIndex].remove();
+                        insideIndex--;
+                        index--;
+                    }
+    
+                        
+                    }
+                    
+                }
+    
+        }
+        function makeNewDiv() {
+            /* make the div and its text */
+            let data = document.getElementById("input").value;
+            let element = document.createElement("div")
+            element.innerHTML = data
+            element.className = "stack"
+    
+    
+            /* add it to the container */
+            document.getElementById('target').appendChild(element)
+    
+        }
+        function popItem() {
+            let stackItems = document.getElementsByClassName('stack');
+            if (stackItems != undefined && stackItems.length > 0) {
+                stackItems[stackItems.length - 1].remove();
+            }
+    
+        }
+        function Zapvalues() {
+            let data = document.getElementById("input").value;
+            let stackItems = document.getElementsByClassName('stack');
+    
+            if (stackItems != undefined && stackItems.length > 0) {
+                let stacksLength = stackItems.length;
+                for (let index = 0; index < stackItems.length; index++) {
+                    let element = stackItems[index].innerHTML;
+                    if (element == data) {
+                        console.log(stackItems[index])
+                        stackItems[index].remove();
+                        index--;
+                    }
+    
+                }
+            }
+    
+    
+        }
+   
+</script>
+</body>
+</html>	
